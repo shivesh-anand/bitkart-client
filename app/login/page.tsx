@@ -49,6 +49,13 @@ const LoginPage = () => {
     try {
       const response = await login(form).unwrap();
 
+      Cookies.set("token", response.token, {
+        path: "/",
+        domain: ".king-prawn-app-amyex.ondigitalocean.app",
+        secure: true,
+        sameSite: "None",
+      });
+
       dispatch(
         setCredentials({
           token: response.token,

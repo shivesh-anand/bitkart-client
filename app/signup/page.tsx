@@ -53,12 +53,13 @@ const SignUpPage = () => {
       const response = await register(form).unwrap();
 
       toast.success(response.message);
-      //console.log(response);
+      console.log(response);
       //console.log(response.user._id);
       //dispatch(setCredentials(response.user));
       router.push(`/verify-otp/${response.user._id}`); // Redirect to home or other protected page
     } catch (err) {
       toast.error((err as Error).message);
+      console.log(err);
       // Handle errors (e.g., show error message to user)
     }
   };
