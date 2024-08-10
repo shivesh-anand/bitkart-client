@@ -4,6 +4,10 @@ import Cookies from "js-cookie";
 const baseQuery = fetchBaseQuery({
   baseUrl: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/`,
   prepareHeaders: (headers) => {
+    // Add content-type header
+    headers.set("Content-Type", "application/json");
+    // Add CORS credentials header
+    headers.set("Access-Control-Allow-Credentials", "true");
     const token = Cookies.get("token");
 
     if (token) {
