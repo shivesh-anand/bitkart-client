@@ -60,7 +60,7 @@ const EditProfilePage = () => {
       await updateUserProfile(updatedUser).unwrap();
       toast.success("Profile updated successfully");
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       toast.error("An error occurred. Please try again.");
     }
   };
