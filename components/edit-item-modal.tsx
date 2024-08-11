@@ -163,29 +163,32 @@ export default function EditItemModal({
   const handleSubmit = async () => {
     setDisableEditButton(true);
     setEditLoading(true);
-    try {
-      const updatedFields: Partial<Item> = {
-        title: formValues.title,
-        description: formValues.description,
-        price: Number(formValues.price),
-        room_no: formValues.roomNumber || undefined,
-        hostel_no: formValues.hostelNumber || undefined,
-        contact_no: formValues.contactNumber || undefined,
-      };
 
-      await updateItem({
-        id: itemId,
-        updatedItem: updatedFields,
-      }).unwrap();
+    const updatedFields: Partial<Item> = {
+      title: formValues.title,
+      description: formValues.description,
+      price: Number(formValues.price),
+      room_no: formValues.roomNumber || undefined,
+      hostel_no: formValues.hostelNumber || undefined,
+      contact_no: formValues.contactNumber || undefined,
+    };
 
-      toast.success("Item updated successfully");
-      onClose();
-    } catch (error) {
-      toast.error("Failed to update item");
-    } finally {
-      setDisableEditButton(false);
-      setEditLoading(false);
-    }
+    toast
+      .promise(
+        updateItem({ id: itemId, updatedItem: updatedFields }).unwrap(),
+        {
+          loading: "Updating item...",
+          success: "Item updated successfully",
+          error: "Failed to update item",
+        }
+      )
+      .then(() => {
+        onClose();
+      })
+      .finally(() => {
+        setDisableEditButton(false);
+        setEditLoading(false);
+      });
   };
 
   return (
@@ -198,7 +201,6 @@ export default function EditItemModal({
         <ScrollShadow>
           <ModalBody>
             <div className="flex flex-wrap items-center justify-center">
-              <h1>Uploading may take time as we are using Free Tier Servers</h1>
               <Carousel className="w-full relative" opts={{ loop: true }}>
                 <CarouselContent>
                   {images.map((image, index) => (
