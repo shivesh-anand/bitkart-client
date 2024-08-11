@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
 import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 import { setCredentials } from "@/redux/slices/authSlice";
 
@@ -37,7 +37,7 @@ const GoogleAuthPage = () => {
 
       toast.success("Logged in successfully!", { id: "login-success" });
 
-      router.push("/?refresh=true");
+      router.push("/");
     } else if (searchParams.get("error") === "already_signed_up") {
       toast.error("You are already signed up!", { id: "already-signed-up" });
       router.replace("/login");
