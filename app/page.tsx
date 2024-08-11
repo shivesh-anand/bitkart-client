@@ -5,8 +5,21 @@ import { Button } from "@nextui-org/button";
 import { CartIcon } from "@/components/icons";
 import GradualSpacing from "@/components/magicui/gradual-spacing";
 import ProductList from "@/components/product-list";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const refresh = searchParams.get("refresh");
+
+    if (refresh === "true") {
+      router.replace("/");
+      window.location.reload();
+    }
+  }, [searchParams, router]);
   return (
     <section className="flex flex-col items-center justify-center gap-4">
       <div className="flex flex-row items-center justify-center gap-4 mb-4">
