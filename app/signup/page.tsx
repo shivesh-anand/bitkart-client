@@ -89,6 +89,7 @@ const SignUpPage = () => {
               value={form.firstName}
               variant="bordered"
               onChange={handleChange}
+              isRequired
             />
             <Input
               endContent={
@@ -100,6 +101,7 @@ const SignUpPage = () => {
               value={form.lastName}
               variant="bordered"
               onChange={handleChange}
+              isRequired
             />
             <Input
               endContent={
@@ -111,6 +113,7 @@ const SignUpPage = () => {
               value={form.email}
               variant="bordered"
               onChange={handleChange}
+              isRequired
             />
             <Input
               endContent={
@@ -123,6 +126,7 @@ const SignUpPage = () => {
               value={form.password}
               variant="bordered"
               onChange={handleChange}
+              isRequired
             />
             <Button
               className="w-full"

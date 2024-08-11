@@ -98,6 +98,7 @@ const LoginPage = () => {
             value={form.email}
             variant="bordered"
             onChange={handleChange}
+            isRequired
           />
           <Input
             endContent={
@@ -110,6 +111,7 @@ const LoginPage = () => {
             value={form.password}
             variant="bordered"
             onChange={handleChange}
+            isRequired
           />
           <Button
             className="font-bold text-lg w-full transition duration-200 hover:bg-green-500 hover:text-black"
