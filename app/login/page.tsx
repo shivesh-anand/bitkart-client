@@ -21,6 +21,7 @@ import { RootState } from "@/redux/store";
 
 const LoginPage = () => {
   const [form, setForm] = useState({ email: "", password: "" });
+  const [isValidEmail, setIsValidEmail] = useState(false);
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -38,10 +39,21 @@ const LoginPage = () => {
   }, [isAuthenticated, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    // Validate email
+    if (name === "email") {
+      if (!value.endsWith("@bitmesra.ac.in")) {
+        setIsValidEmail(true);
+      } else {
+        setIsValidEmail(false);
+      }
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,6 +74,7 @@ const LoginPage = () => {
       toast.success("Logged in successfully", { id: "logged in" });
 
       router.push("/");
+      window.location.reload();
     } catch (err: any) {
       if (
         err.data?.message ===
@@ -96,6 +109,8 @@ const LoginPage = () => {
             name="email"
             placeholder="Enter your email e.g: btech10123.21@bitmesra.ac.in"
             value={form.email}
+            isInvalid={isValidEmail}
+            errorMessage="Please use your institute email id"
             variant="bordered"
             onChange={handleChange}
             isRequired

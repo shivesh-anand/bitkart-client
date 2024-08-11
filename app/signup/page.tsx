@@ -26,6 +26,7 @@ const SignUpPage = () => {
   });
 
   const [register, { isLoading, error, isError }] = useRegisterMutation();
+  const [isValidEmail, setIsValidEmail] = useState(false);
 
   const router = useRouter();
   const isAuthenticated = useSelector(
@@ -40,11 +41,29 @@ const SignUpPage = () => {
     }
   }, [isAuthenticated, router]);
 
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setForm({
+  //     ...form,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    // Validate email
+    if (name === "email") {
+      if (!value.endsWith("@bitmesra.ac.in")) {
+        setIsValidEmail(true);
+      } else {
+        setIsValidEmail(false);
+      }
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -113,6 +132,8 @@ const SignUpPage = () => {
               value={form.email}
               variant="bordered"
               onChange={handleChange}
+              isInvalid={isValidEmail}
+              errorMessage="Please enter your institute email id"
               isRequired
             />
             <Input
