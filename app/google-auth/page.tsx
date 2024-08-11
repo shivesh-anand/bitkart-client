@@ -1,9 +1,10 @@
 "use client";
 
-import Cookies from "js-cookie";
+import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 import { setCredentials } from "@/redux/slices/authSlice";
 
@@ -12,37 +13,38 @@ const GoogleAuthPage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const token = searchParams.get("token")!;
-  const firstName = searchParams.get("firstName")!;
-  const lastName = searchParams.get("lastName")!;
-  const email = searchParams.get("email")!;
-  const _id = searchParams.get("_id")!;
-  const googleId = searchParams.get("googleId")!;
+  useEffect(() => {
+    const token = searchParams.get("token")!;
+    const firstName = searchParams.get("firstName")!;
+    const lastName = searchParams.get("lastName")!;
+    const email = searchParams.get("email")!;
+    const _id = searchParams.get("_id")!;
+    const googleId = searchParams.get("googleId")!;
 
-  if (token) {
-    Cookies.set("token", token, { expires: 1, secure: true });
+    if (token) {
+      Cookies.set("token", token, { expires: 1, secure: true });
 
-    dispatch(
-      setCredentials({
-        token,
-        firstName,
-        lastName,
-        email,
-        _id,
-        googleId,
-      })
-    );
+      dispatch(
+        setCredentials({
+          token,
+          firstName,
+          lastName,
+          email,
+          _id,
+          googleId,
+        })
+      );
 
-    toast.success("Logged in successfully!", { id: "login-success" });
+      toast.success("Logged in successfully!", { id: "login-success" });
 
-    router.push("/");
-    window.location.reload();
-  } else if (searchParams.get("error") === "already_signed_up") {
-    toast.error("You are already signed up!", { id: "already-signed-up" });
-    router.replace("/login");
-  } else {
-    router.replace("/login");
-  }
+      router.replace("/");
+    } else if (searchParams.get("error") === "already_signed_up") {
+      toast.error("You are already signed up!", { id: "already-signed-up" });
+      router.replace("/login");
+    } else {
+      router.replace("/login");
+    }
+  }, [searchParams, router, dispatch]);
 
   return <div>Redirecting...</div>;
 };
