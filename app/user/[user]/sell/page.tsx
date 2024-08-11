@@ -146,6 +146,7 @@ const SellPage = () => {
         className="font-display text-center text-5xl font-bold mb-4 tracking-[-0.1em] text-black dark:text-white md:text-5xl md:leading-[5rem]"
         text="Sell an Item"
       />
+      <h1>Uploading may take time as we are using Free Tier Servers</h1>
       <form
         className="items-center justify-center flex flex-col gap-4 w-full"
         onSubmit={handleSubmit}

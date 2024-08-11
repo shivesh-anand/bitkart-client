@@ -53,6 +53,7 @@ export default function EditItemModal({
     price: "",
     roomNumber: "",
     hostelNumber: "",
+    contactNumber: "",
   });
 
   const { data: fetchedItem, refetch } = useGetItemByIdQuery(itemId);
@@ -69,6 +70,7 @@ export default function EditItemModal({
         price: String(fetchedItem.price),
         roomNumber: String(fetchedItem.room_no || ""),
         hostelNumber: String(fetchedItem.hostel_no),
+        contactNumber: String(fetchedItem.contact_no),
       });
     }
   }, [fetchedItem]);
@@ -168,6 +170,7 @@ export default function EditItemModal({
         price: Number(formValues.price),
         room_no: formValues.roomNumber || undefined,
         hostel_no: formValues.hostelNumber || undefined,
+        contact_no: formValues.contactNumber || undefined,
       };
 
       await updateItem({
@@ -195,6 +198,7 @@ export default function EditItemModal({
         <ScrollShadow>
           <ModalBody>
             <div className="flex flex-wrap items-center justify-center">
+              <h1>Uploading may take time as we are using Free Tier Servers</h1>
               <Carousel className="w-full relative" opts={{ loop: true }}>
                 <CarouselContent>
                   {images.map((image, index) => (
@@ -274,6 +278,15 @@ export default function EditItemModal({
                 placeholder={String(formValues.hostelNumber)}
                 type="number"
                 value={formValues.hostelNumber}
+                variant="bordered"
+                onChange={handleInputChange}
+              />
+              <Input
+                label="Edit Contact Number"
+                name="contactNumber"
+                placeholder={String(formValues.hostelNumber)}
+                type="number"
+                value={formValues.contactNumber}
                 variant="bordered"
                 onChange={handleInputChange}
               />

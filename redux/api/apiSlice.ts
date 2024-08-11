@@ -9,7 +9,7 @@ const baseQuery = fetchBaseQuery({
 
     headers.set("Access-Control-Allow-Credentials", "true");
     const token = Cookies.get("token");
-    console.log("token in apislice", token);
+    //console.log("token in apislice", token);
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
     }
