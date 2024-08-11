@@ -177,7 +177,8 @@ export default function EditItemModal({
       .promise(
         updateItem({ id: itemId, updatedItem: updatedFields }).unwrap(),
         {
-          loading: "Updating item...",
+          loading:
+            "Updating item may take time as we are using free tier servers!",
           success: "Item updated successfully",
           error: "Failed to update item",
         }
