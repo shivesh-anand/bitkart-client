@@ -36,7 +36,7 @@ const GoogleAuthPage = () => {
       );
 
       toast.success("Logged in successfully!", { id: "login-success" });
-
+      localStorage.setItem("loggedIn", "true");
       router.push("/");
     } else if (searchParams.get("error") === "already_signed_up") {
       toast.error("You are already signed up!", { id: "already-signed-up" });
