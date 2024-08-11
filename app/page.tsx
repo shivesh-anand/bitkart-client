@@ -12,14 +12,13 @@ export default function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  useEffect(() => {
-    const refresh = searchParams.get("refresh");
+  const refresh = searchParams.get("refresh");
 
-    if (refresh === "true") {
-      router.replace("/");
-      window.location.reload();
-    }
-  }, [searchParams, router]);
+  if (refresh === "true") {
+    router.replace("/");
+    window.location.reload();
+  }
+
   return (
     <section className="flex flex-col items-center justify-center gap-4">
       <div className="flex flex-row items-center justify-center gap-4 mb-4">
