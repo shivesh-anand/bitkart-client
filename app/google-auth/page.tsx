@@ -23,6 +23,10 @@ const GoogleAuthPage = () => {
     console.log("token", token);
     if (token) {
       //Cookies.set("token", token, { expires: 1, secure: true });
+      Cookies.set("token", token, {
+        path: "/",
+        domain: ".king-prawn-app-amyex.ondigitalocean.app",
+      });
 
       dispatch(
         setCredentials({
