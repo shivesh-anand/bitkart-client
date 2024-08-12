@@ -169,6 +169,7 @@ const SignUpPage = () => {
               color="success"
               size="lg"
               startContent={<GoogleIcon />}
+              isDisabled={isLoading}
               variant="shadow"
               onPress={() =>
                 (window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/google`)

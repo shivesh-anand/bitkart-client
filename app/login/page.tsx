@@ -145,6 +145,7 @@ const LoginPage = () => {
             className="font-bold text-lg w-full transition duration-200 hover:bg-green-500 hover:text-black"
             size="lg"
             startContent={<GoogleIcon />}
+            isDisabled={isLoading}
             variant="shadow"
             onPress={() =>
               (window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/google`)
