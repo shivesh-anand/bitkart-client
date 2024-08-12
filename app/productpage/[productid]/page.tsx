@@ -133,7 +133,11 @@ export default function ProductPage({
             <li className="font-normal text-lg">
               Contact Number:{" "}
               {data.contact_no ? (
-                <Link href={`tel:${data.contact_no}`} color="foreground">
+                <Link
+                  href={`tel:${data.contact_no}`}
+                  color="foreground"
+                  isExternal
+                >
                   {data.contact_no}
                 </Link>
               ) : (
@@ -142,7 +146,11 @@ export default function ProductPage({
             </li>
             <li className="font-normal text-lg">
               Email:{" "}
-              <Link href={`mailto:${data.seller.email}`} color="foreground">
+              <Link
+                href={`mailto:${data.seller.email}`}
+                color="foreground"
+                isExternal
+              >
                 {data.seller.email}
               </Link>
             </li>

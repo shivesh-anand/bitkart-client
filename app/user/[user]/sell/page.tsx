@@ -137,8 +137,8 @@ const SellPage = () => {
       setIsLoading(false);
       router.push("/"); // Redirect to items page or another page
     } catch (error) {
-      //console.error("Error creating item:", error);
-      toast.error("Failed to create item");
+      console.error("Error creating item:", error);
+      //toast.error("Failed to create item");
     }
   };
 
