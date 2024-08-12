@@ -20,9 +20,9 @@ const GoogleAuthPage = () => {
     const email = searchParams.get("email")!;
     const _id = searchParams.get("_id")!;
     const googleId = searchParams.get("googleId")!;
-
+    console.log("token", token);
     if (token) {
-      Cookies.set("token", token, { expires: 1, secure: true });
+      //Cookies.set("token", token, { expires: 1, secure: true });
 
       dispatch(
         setCredentials({

@@ -146,9 +146,32 @@ const LoginPage = () => {
             size="lg"
             startContent={<GoogleIcon />}
             variant="shadow"
-            onPress={() =>
-              (window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/google`)
-            }
+            onPress={async () => {
+              try {
+                const response = await fetch(
+                  `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/google`,
+                  {
+                    method: "GET",
+                    credentials: "include",
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Access-Control-Allow-Credentials": "true",
+                    },
+                  }
+                );
+
+                if (response.ok) {
+                  window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/auth/google/callback`;
+                } else {
+                  console.error(
+                    "Google authentication failed",
+                    response.status
+                  );
+                }
+              } catch (error) {
+                console.error("Error during Google authentication", error);
+              }
+            }}
           >
             Login with Google
           </Button>
