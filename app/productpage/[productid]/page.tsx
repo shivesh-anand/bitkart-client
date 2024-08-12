@@ -133,24 +133,14 @@ export default function ProductPage({
             <li className="font-normal text-lg">
               Contact Number:{" "}
               {data.contact_no ? (
-                <Link
-                  href={`tel:${data.contact_no}`}
-                  color="foreground"
-                  isExternal
-                >
-                  {data.contact_no}
-                </Link>
+                <Link href={`tel:${data.contact_no}`}>{data.contact_no}</Link>
               ) : (
                 "Not Available"
               )}
             </li>
             <li className="font-normal text-lg">
               Email:{" "}
-              <Link
-                href={`mailto:${data.seller.email}`}
-                color="foreground"
-                isExternal
-              >
+              <Link href={`mailto:${data.seller.email}`}>
                 {data.seller.email}
               </Link>
             </li>
