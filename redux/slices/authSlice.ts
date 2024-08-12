@@ -33,6 +33,7 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
       Cookies.set("token", action.payload.token, {
         secure: true,
+        sameSite: "none",
         expires: 7,
       });
     },
