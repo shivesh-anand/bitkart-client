@@ -24,6 +24,8 @@ const metadata = {
     "Birla Institute of Technology, Mesra",
     "Birla Institute of Technology",
     "students",
+    "bitkart bit mesra",
+    "bitkart bit",
   ],
   author: "Shivesh Anand",
   robots: "index, follow",
