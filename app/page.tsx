@@ -8,7 +8,7 @@ import ProductList from "@/components/product-list";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export const metadata = {
+const metadata = {
   title: "Home | Bitkart - Buy & Sell Used Items",
   description:
     "Discover a wide range of used items for sale at Bitkart, exclusively for students of BIT, Mesra. Buy and sell second-hand products easily and securely. Start exploring now!",

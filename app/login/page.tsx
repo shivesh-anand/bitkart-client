@@ -19,7 +19,7 @@ import { useLoginMutation } from "@/redux/api/apiSlice";
 import { setCredentials } from "@/redux/slices/authSlice";
 import { RootState } from "@/redux/store";
 
-export const metadata = {
+const metadata = {
   title: "Login - Bitkart",
   description:
     "Login to your Bitkart account using your institute email ID. Secure and easy access to your account with email and password or Google login.",

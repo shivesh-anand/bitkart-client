@@ -58,7 +58,7 @@ const categoryTitles: Record<Category, string> = {
   others: "Others",
 };
 
-export const metadata = {
+const metadata = {
   title: "Category - Bitkart",
   description:
     "Explore a variety of used items in different categories at Bitkart. Find the best deals in electronics, bikes, clothing, and more. Shop now!",

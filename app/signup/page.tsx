@@ -17,7 +17,7 @@ import ShineBorder from "@/components/magicui/shine-border";
 import { useRegisterMutation } from "@/redux/api/apiSlice";
 import { RootState } from "@/redux/store";
 
-export const metadata = {
+const metadata = {
   title: "Sign Up - Bitkart",
   description:
     "Create a new Bitkart account using your institute email ID. Sign up easily with your email and password or via Google login.",

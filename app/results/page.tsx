@@ -13,7 +13,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { useGetAllItemsQuery } from "@/redux/api/itemSlice";
 import { Item } from "@/types/item";
 
-export const metadata = {
+const metadata = {
   title: "Search Results - Bitkart",
   description:
     "Browse through search results for items listed on Bitkart. Find the best deals on second-hand items posted by BIT Mesra students.",
