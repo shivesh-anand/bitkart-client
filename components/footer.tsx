@@ -4,6 +4,7 @@ import { Link } from "@nextui-org/link";
 import { CopyrightIcon, MailIcon } from "./icons";
 
 import { siteConfig } from "@/config/site";
+import { ShieldIcon } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,6 +13,16 @@ const Footer = () => {
     <div className="w-full text-center items-center justify-center ">
       <Divider />
       <div className="items-center justify-center w-full py-5 tracking-widest text-center px-8 flex flex-wrap">
+        <Link
+          isExternal
+          className="px-4 gap-2"
+          color="foreground"
+          href="/privacy-policy"
+        >
+          <ShieldIcon fill="currentColor" />
+          Privacy Policy
+        </Link>
+        |{" "}
         <Link
           isExternal
           className="px-4 gap-2"
